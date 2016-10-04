@@ -1,0 +1,115 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+/**
+ *      Table of Contents
+ *
+ *          1. DASHBOARD WIDGET
+ *          2. MESSAGE ADMIN PAGE LAYOUT
+ *          3. LIST TABLE ROW ACTION OVERRIDE
+ *          4. AJAX LOADER
+ *          5. MISC
+ *
+ */
+
+
+/* ============================== DASHBOARD WIDGET ============================== */
+
+.spm-dashboard-message {
+    height: auto;
+}
+
+.spm-badge-success {
+    background: #00b9eb !important;
+}
+
+.spm-badge-warning {
+    background: #ffc733 !important;
+}
+
+.spm-badge-error {
+    background: #ce8483 !important;
+}
+
+.message-notice {
+    font-weight: bolder;
+    color: #036881;
+}
+
+.spm-badge {
+    height: 130px;
+    width: auto;
+    background: #5bc0de;
+    margin-bottom: 16px;
+    padding: 0 33px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    box-shadow: inset 1px 1px 24px -1px #3c3c3c;
+    -webkit-box-shadow: inset 1px 1px 24px -1px #3c3c3c;
+    -moz-box-shadow: inset 1px 1px 24px -1px #3c3c3c;
+}
+
+.spm-badge .counter {
+    margin: 0;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bolder;
+    height: 80px;
+    color: #5C5A5B;
+    text-shadow: rgb(224, 224, 224) 1px 1px 0px;
+}
+
+.spm-dashboard-message .spm-badge .block {
+    text-shadow: rgb(224, 224, 224) 1px 1px 0px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+
+/* ============================== MESSAGE ADMIN PAGE LAYOUT ============================== */
+
+.admin-wrap {
+    min-height: 100px;
+    margin-right: 10px;
+    margin-top: 23px;
+}
+
+
+/* ============================== LIST TABLE ROW ACTION OVERRIDE ============================== */
+
+.row-actions {
+    font-weight: 200 !important;
+    font-style: normal !important;
+}
+
+
+/* ============================== AJAX LOADER ============================== */
+
+#divLoading {
+    display: none;
+}
+
+#divLoading.show {
+    display: block;
+    position: fixed;
+    background-image: url('../img/processing.gif');
+    background-color: #666;
+    opacity: 0.4;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
+}
+
+
+/* ============================== MISC ============================== */
+
+.tablenav-pages-navspan {
+    height: 28px !important;
+}

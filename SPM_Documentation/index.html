@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>Simple Personal Message Documentation</title>
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+    <link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+    <link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css"
+          media="screen, projection">
+    <style type="text/css" media="screen">
+        p, table, hr, .box {
+            margin-bottom: 25px;
+        }
+
+        .box p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="container">
+
+    <h3 class="center alt">&ldquo;Simple Personal Message&rdquo; Documentation by &ldquo;Md. Shamim Shahnewaz&rdquo;
+        v1.0.3</h3>
+
+    <hr>
+
+    <h1 class="center">&ldquo;Simple Personal Message&rdquo;</h1>
+
+    <div class="borderTop">
+        <div class="span-6 colborder info prepend-1">
+            <p class="prepend-top">
+                <strong><em>
+                    Release: 07 / 06 / 2016<br>
+                    Md. Shamim Shahnewaz<br>
+                    <a href="mailto:mdshamimshahnewaz@gmail.com">mdshamimshahnewaz@gmail.com</a>
+                </em></strong>
+            </p>
+        </div><!-- end div .span-6 -->
+
+        <div class="span-12 last">
+            <p class="prepend-top append-0">
+                Thank you for purchasing my plugin. If you have any questions that are beyond the scope of this help
+                file, please feel free to email. Thank you so much!
+            </p>
+        </div>
+    </div><!-- end div .borderTop -->
+
+    <hr>
+
+    <h2 id="toc" class="alt">Table of Contents</h2>
+    <ol class="alpha">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#configuration">Activation and Configuration</a></li>
+        <li><a href="#personalize">Personalize Inbox</a></li>
+        <li><a href="#usergroup">Create User Group</a></li>
+        <li><a href="#assignuser">Assign User to Group</a></li>
+        <li><a href="#sendmessage">Send a Message</a></li>
+        <li><a href="#inbox">Inbox List</a></li>
+        <li><a href="#outbox">Outbox List</a></li>
+        <li><a href="#trash">Trash List</a></li>
+        <li><a href="#view">View Message Details</a></li>
+        <li><a href="#dashboard">Dashboard Statistics</a></li>
+        <li><a href="#credits">Sources and Credits</a></li>
+    </ol>
+
+    <hr>
+
+    <h3 id="introduction"><strong>A) Introduction</strong> - <a href="#toc">top</a></h3>
+    <p>
+        <strong>Simple Personal Message</strong> is a private and secure messaging system for Wordpress website. Ajax
+        based Full functioning and <strong>Group</strong> based messaging system to ensure the private communication
+        with all users to users of any
+        Wordpress system site. Developer customization is very easy and built with most popular <em>Boilerplate</em>
+        plugin architecture.
+    </p>
+
+    <p><strong>System Key Features - </strong></p>
+
+    <ul>
+        <li>Send message to All users</li>
+        <li>AJAX sending message</li>
+        <li>Multiple recipients</li>
+        <li>Recipients user group</li>
+        <li>Multi threading inbox</li>
+        <li>Reply and forward options</li>
+        <li>Outbox message forwarding</li>
+        <li>Move to trash</li>
+        <li>Restore trash messages</li>
+        <li>Read unread indicator on trash</li>
+        <li>Delete permanently</li>
+        <li>Personalize inbox</li>
+        <li>Old message schedule delete</li>
+        <li>Customize read unread style</li>
+        <li>Role based message sending limit</li>
+        <li>Email notification</li>
+        <li>Dashboard widget</li>
+        <li>Admin notice for new message</li>
+        <li>Inbox counter indicator</li>
+    </ul>
+
+    <hr>
+
+    <h3 id="installation"><strong>B) Installation</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        <strong>Simple Personal Message</strong> is easy to install. Follow the instruction to install plugin.
+    </p>
+
+    <p>
+        <u>Via Plugin Installer</u><br>
+        Login to your wordpress admin panel <tt>http://your_domain_name.com/wp-admin</tt>
+        <br>
+        Follow this guideline to install your plugin via <a href="https://codex.wordpress.org/Plugins_Add_New_Screen"
+                                                            target="_blank">Plugin Installer</a>
+    </p>
+
+    <p>
+        <u>Manual Installation</u><br>
+        Download the plugin and unzip. Go to <tt>your_site_root_directory/wp-content/plugins</tt> and then upload via
+        FTP program.
+        <br>
+        Follow this details guideline to install your plugin via <a
+            href="https://codex.wordpress.org/Plugins_Add_New_Screen" target="_blank">Manual Installation</a>
+    </p>
+
+    <hr>
+
+    <h3 id="configuration"><strong>C) Activation and Configuration</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        Go to plugin screen and click <em>Activate</em> button.
+    </p>
+
+    <p>
+        After activation a <em>Settings</em> link will be appear and click to go to settings page. <br><br>
+        <img src="assets/images/settingslink.png" alt="SPM Settings Menu"> <br><br>
+
+        Or you can go to and click <em>Settings &gt; SPM Settings</em> <br><br>
+        <img src="assets/images/settingsmenu.png" alt="SPM Settings Menu"> <br><br>
+
+        In settings page you can set the limit of sending message accourding to user Roles / Capabilities. <em>Blank or
+        Zero(0)</em> means unlimited. <br><br>
+        <img src="assets/images/settingspage.png" alt="SPM Settings Menu"> <br><br>
+    </p>
+
+    <hr>
+
+    <h3 id="personalize"><strong>D) Personalize Inbox</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        Go to and click <em>SPM Message &gt; Personalize Inbox</em> <br><br>
+        <img src="assets/images/personalizemenu.png" alt="SPM Settings Menu"> <br><br>
+
+        In personalize page you can config your inbox and general settings. All filed are describe below.<br><br>
+        <img src="assets/images/personalizepage.png" alt="SPM Settings Menu"> <br><br>
+        <strong><u>Field Description</u></strong>
+    <ul>
+        <li><strong>Maximum message per page</strong> <br>
+            Show conversations per page. <em>NB: Set a value otherwise inbox list will be blank</em></li>
+        <li style="list-style: none">&nbsp;</li>
+        <li><strong>Maximum days to keep old message (inbox)</strong> <br>
+            <ul>
+                <li><em>Keep Forever</em> - Never delete inbox message automatically</li>
+                <li><em>Keep for 30 Days</em> - Automatically delete inbox message after 30 days</li>
+                <li><em>Keep for 60 Days</em> - Automatically delete inbox message after 60 days</li>
+                <li><em>Keep for 90 Days</em> - Automatically delete inbox message after 90 days</li>
+                <li><em>Keep for 120 Days</em> - Automatically delete inbox message after 120 days</li>
+            </ul>
+        </li>
+        <li style="list-style: none">&nbsp;</li>
+        <li><strong>Maximum days to keep old message (outbox)</strong> <br>
+            <ul>
+                <li><em>Keep Forever</em> - Never delete outbox message automatically</li>
+                <li><em>Keep for 30 Days</em> - Automatically delete outbox message after 30 days</li>
+                <li><em>Keep for 60 Days</em> - Automatically delete outbox message after 60 days</li>
+                <li><em>Keep for 90 Days</em> - Automatically delete outbox message after 90 days</li>
+                <li><em>Keep for 120 Days</em> - Automatically delete outbox message after 120 days</li>
+            </ul>
+        </li>
+    </ul>
+    <strong><u>Read / Unread CSS Configuration</u></strong><br><br>
+    <ul>
+        <li><strong>Font Style</strong> <br>
+            Set Font style. <em>Support all CSS font style values</em></li>
+        <li style="list-style: none">&nbsp;</li>
+        <li><strong>Font Weight</strong> <br>
+            Set Font Weight. <em>Support CSS values (normal, bold, bolder)</em></li>
+        <li style="list-style: none">&nbsp;</li>
+        <li><strong>Border Sides</strong> <br>
+            Set Border Sides. <em>Support all CSS border values</em><br>
+            If set <tt>None</tt> Border width will be not working
+        </li>
+        <li style="list-style: none">&nbsp;</li>
+        <li><strong>Border Width</strong> <br>
+            Set Border Width. <em>Support three (3) parameters</em><br>
+            1. Width - unit is pixel<br>
+            2. Style - Support all CSS border styles<br>
+            3. Color - Support hexadecimal value
+        </li>
+        <li style="list-style: none">&nbsp;</li>
+        <li><strong>Text Decoration</strong> <br>
+            Set Text Decoration. <em>Support all CSS text decoration values</em></li>
+        <li style="list-style: none">&nbsp;</li>
+        <li><strong>Row Background</strong> <br>
+            Set message row background color. <em>Support hexadecimal value</em></li>
+    </ul>
+    </p>
+
+    <hr>
+
+    <h3 id="usergroup"><strong>E) Create User Group</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        Go to and click <em>User &gt; SPM User Groups</em> <br><br>
+        <img src="assets/images/usergroupmenu.png" alt="SPM User Groups Menu"> <br><br>
+
+        In SPM User Group page you can create user group and manage them. Using <tt>WP Taxonomy</tt> so you can edit
+        easily as you need. <br><br>
+        <img src="assets/images/usergrouppage.png" alt="SPM User Groups"> <br><br>
+    </p>
+
+    <hr>
+
+    <h3 id="assignuser"><strong>F) Assign User to Group</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        Go to and click <em>Users &gt; All users</em> <br><br>
+        <img src="assets/images/allusermenu.png" alt="All Users Menu"> <br><br>
+
+        In All Users page you can assign a group into seleted users and manage them also. Select users and click <em>Change
+        Group to</em> then select your desire group and click <em>Change</em> button.<br><br>
+        <img src="assets/images/assignuserpage.png" alt="SPM Assign User"> <br><br>
+    </p>
+
+    <hr>
+
+    <h3 id="sendmessage"><strong>G) Send a Message</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        Go to and click <em>SPM Message &gt; SPM Compose</em> <br><br>
+        <img src="assets/images/messagemenu.png" alt="SPM Compose Menu"> <br><br>
+
+        Or go to and click <em>New &gt; Message</em> <br><br>
+        <img src="assets/images/newmessage.png" alt="SPM Compose Menu"> <br><br>
+
+        In SPM Compose page you can send message. Type an user name on <tt>Enter Receiver Name</tt> field, an
+        autocomplete user list will appear based on your keyword. You can send message to multiple user. Also you can
+        select group to send message to your recipients and/or group recipients<br><br>
+        <img src="assets/images/composepage.png" alt="SPM User Groups"> <br><br>
+    </p>
+
+    <hr>
+
+    <h3 id="inbox"><strong>H) Inbox</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        Go to and click <em>SPM Message &gt; SPM Inbox</em> <br><br>
+        <img src="assets/images/messagemenu.png" alt="SPM Message Menu"> <br><br>
+
+        Or click <em>Admin Notice</em> <br><br>
+        <img src="assets/images/adminnotice.png" alt="SPM Admin notice"> <br><br>
+
+        In SPM Inbox page you can view all your inbox message. You can read, delete, view, reply and forward message
+        from here.<br><br>
+        <img src="assets/images/inboxpage.png" alt="SPM Inbox"> <br><br>
+    </p>
+
+    <hr>
+
+    <h3 id="outbox"><strong>I) Outbox</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        Go to and click <em>SPM Message &gt; SPM Outbox</em> <br><br>
+        <img src="assets/images/messagemenu.png" alt="SPM Message Menu"> <br><br>
+
+        In SPM Outbox page you can view all your outbox message. You can read, delete, view and forward message from
+        here.<br><br>
+        <img src="assets/images/outboxpage.png" alt="SPM Outbox"> <br><br>
+    </p>
+
+    <hr>
+
+    <h3 id="trash"><strong>J) Trash List</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        Go to and click <em>SPM Message &gt; SPM Trash</em> <br><br>
+        <img src="assets/images/messagemenu.png" alt="SPM Message Menu"> <br><br>
+
+        In SPM Trash page you can view all your deleted message. You can restore and permanently delete your trash
+        message fro here.<br><br>
+        <img src="assets/images/trashpage.png" alt="SPM Trash"> <br><br>
+    </p>
+
+    <hr>
+
+    <h3 id="view"><strong>K) View Message Details</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        Go to and click <em>SPM Message &gt; SPM Trash</em> <br><br>
+        <img src="assets/images/messagemenu.png" alt="SPM Message Menu"> <br><br>
+
+        In SPM Outbox page you can view all your outbox message.<br><br>
+        <img src="assets/images/viewpage.png" alt="SPM Message View"> <br><br>
+    </p>
+
+    <hr>
+
+    <h3 id="dashboard"><strong>L) Dashboard Statistics</strong> - <a href="#toc">top</a></h3>
+
+    <p>
+        Go to <em>Dashboard</em> Your message stats will be appear based on your configuration.<br><br>
+        <img src="assets/images/dashboard.png" alt="SPM Dashboard"> <br><br>
+    </p>
+
+    <hr>
+
+    <h3 id="credits"><strong>M) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+
+    <p>I've used the following components as listed.
+
+    <ul>
+        <li>jQuery - <a href="https://jquery.org/" target="_blank">jQuery</a></li>
+        <li>jQuery UI - <a href="http://jqueryui.com/" target="_blank">jQuery UI</a></li>
+        <li>Bootstrap - <a href="http://getbootstrap.com/" target="_blank">Boostrap</a></li>
+    </ul>
+
+    <hr>
+
+    <p>Once again, thank you so much for using this plugin. As I said at the beginning, I'd be glad to help you if
+        you have any questions relating to this plugin. I'll do my best to assist. If you have a more
+        general question relating to the plugin on Plugin Directory, you might consider visiting the plugin's forums and asking your
+        question in the "Support" section.</p>
+
+    <p class="append-bottom alt large"><strong>Md. Shamim Shahnewaz</strong></p>
+    <p><a href="#toc">Go To Table of Contents</a></p>
+
+    <hr class="space">
+</div><!-- end div .container -->
+</body>
+</html>
