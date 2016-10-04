@@ -36,7 +36,7 @@ Using of Simple Personal Message is very easy and find the descriptive documenta
 * Simple Personal Message Documentation: http://www.softyardbd.com/simple-personal-message/
 
 ### Youtube Video
-* WP Fakeloader Youtube Video Link: comming soon
+* Youtube Video Link: comming soon
 
 ### Installation
 
