@@ -38,7 +38,7 @@ Using of Simple Personal Message is very easy and find the descriptive documenta
 ### Youtube Video
 * WP Fakeloader Youtube Video Link: comming soon
 
-== Installation ==
+### Installation
 
 - Download the zip file and install the plugin through the WordPress plugins screen directly.
 2. Upload the plugin files to the `/wp-content/plugins/` directory.
@@ -47,17 +47,17 @@ Using of Simple Personal Message is very easy and find the descriptive documenta
 
 For more guide please read the documentation on your plugin root directory `SPM_Documentation`.
 
-== Frequently Asked Questions ==
+### Frequently Asked Questions
 
-= Is Shortcode available? =
+### Is Shortcode available?
 
 * No. Just install and use. Very simple.
 
-= Available admin settings? =
+### Available admin settings?
 
 * Yes available. Settings > SPM Settings
 
-= Available user settings? =
+### Available user settings?
 
 * Yes available. Settings > Personalize Inbox
 
