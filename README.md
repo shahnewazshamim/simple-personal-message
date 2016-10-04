@@ -6,6 +6,8 @@ Simple Personal Message is a private and secure messaging system for WordPress w
 
 Developer customization is very easy and built with most popular Boilerplate plugin architecture.
 
+Download: https://wordpress.org/plugins/simple-personal-message/
+
 ### Uses
 
 Using of Simple Personal Message is very easy and find the descriptive documentation on your plugin directory `SPM_Documentation`.
