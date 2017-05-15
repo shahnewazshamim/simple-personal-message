@@ -16,31 +16,35 @@
 
 <?php
 
-$dashboard = new Simple_Personal_Message_Admin('', '');
+$dashboard = new Simple_Personal_Message_Admin( '', '' );
 
-$messagelimit = get_option('spm_message_send_limit');
+$messagelimit = get_option( 'spm_message_send_limit' );
 
 $total_sent = $dashboard->total_send();
 
-$total_limit = ((int)$messagelimit[wp_get_current_user()->roles[0]] == 0) ? '&infin;' : (int)$messagelimit[wp_get_current_user()->roles[0]];
+$total_limit = ( (int) $messagelimit[ wp_get_current_user()->roles[0] ] == 0 ) ? '&infin;' : (int) $messagelimit[ wp_get_current_user()->roles[0] ];
+$total_remain = '';
+$margin = '';
+if ( is_int( $total_limit ) ) {
+	$total_remain = ( $total_limit - $total_sent );
+	$margin       = floor( $total_limit * 85 / 100 );
+} else {
 
-$total_remain = ($total_limit - $total_sent);
-
-$margin = floor($total_limit * 85 / 100);
+}
 
 $status = '';
 
-if ($total_sent >= $margin && $total_remain != 0) {
+if ( $total_sent >= $margin && $total_remain != 0 ) {
 
-    $status = 'warning';
+	$status = 'warning';
 
-} else if ($total_remain == 0) {
+} else if ( $total_remain == 0 ) {
 
-    $status = 'error';
+	$status = 'error';
 
 } else {
 
-    $status = 'success';
+	$status = 'success';
 
 }
 
@@ -50,7 +54,7 @@ if ($total_sent >= $margin && $total_remain != 0) {
 
     <div class="spm-badge spm-badge-success">
 
-        <p class="counter"><?= ($total_sent < 10) ? '0' . $total_sent : $total_sent ?></p>
+        <p class="counter"><?= ( $total_sent < 10 ) ? '0' . $total_sent : $total_sent ?></p>
 
         <p class="block">Sent Message</p>
 
@@ -58,7 +62,7 @@ if ($total_sent >= $margin && $total_remain != 0) {
 
     <div class="spm-badge spm-badge-<?= $status ?>">
 
-        <p class="counter"><?= ($total_limit == '&infin;') ? $total_limit : $total_remain ?></p>
+        <p class="counter"><?= ( $total_limit == '&infin;' ) ? $total_limit : $total_remain ?></p>
 
         <p class="block">Now Remaining</p>
 
@@ -66,7 +70,7 @@ if ($total_sent >= $margin && $total_remain != 0) {
 
     <div class="spm-badge spm-badge-success">
 
-        <p class="counter"><?= ($total_limit < 10 && $total_limit != '&infin;') ? '0' . $total_limit : $total_limit ?></p>
+        <p class="counter"><?= ( $total_limit < 10 && $total_limit != '&infin;' ) ? '0' . $total_limit : $total_limit ?></p>
 
         <p class="block">Sending Limit</p>
 

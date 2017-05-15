@@ -98,7 +98,7 @@ class Simple_Personal_Message_Admin
 
             $this->plugin_name . '-font-awesome',
 
-            plugin_dir_url(__FILE__) . 'fonts/font-awesome-4.6.2/css/font-awesome.min.css',
+            plugin_dir_url(__FILE__) . 'fonts/font-awesome-4.7.0/css/font-awesome.min.css',
 
             array(),
 
@@ -2026,7 +2026,7 @@ MESSAGE;
      *
      * @since 2.0.0
      *
-     * @return Personalize options items.
+     * @return mixed.
      */
     public function load_personalize_by_user()
     {
