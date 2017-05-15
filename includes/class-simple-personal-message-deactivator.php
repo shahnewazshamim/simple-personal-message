@@ -4,7 +4,7 @@
  * Fired during plugin deactivation
  *
  * @link       http://softyardbd.com/
- * @since      1.0.3
+ * @since      2.0.0
  *
  * @package    Simple_Personal_Message
  * @subpackage Simple_Personal_Message/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's deactivation.
  *
- * @since      1.0.3
+ * @since      2.0.0
  * @package    Simple_Personal_Message
  * @subpackage Simple_Personal_Message/includes
  * @author     Md. Shamim Shahnewaz <shamimshahnewaz@outlook.com>
@@ -28,7 +28,7 @@ class Simple_Personal_Message_Deactivator
      *
      * Plugin de-activate the function when register_deactivation_hook is enable.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      */
     public static function deactivate()
     {
@@ -41,7 +41,7 @@ class Simple_Personal_Message_Deactivator
      *
      * Remove 'daily_schedule_message_delete' schedule.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      */
     private static function daily_schedule_message_delete()
     {

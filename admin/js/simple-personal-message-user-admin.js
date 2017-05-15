@@ -34,7 +34,7 @@
         /**
          * Group member assign.
          *
-         * @since 1.0.3
+         * @since 2.0.0
          */
 
         jQuery('#btn_update').click(function () {

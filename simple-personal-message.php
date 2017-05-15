@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              http://softyardbd.com/
- * @since             1.0.3
+ * @since             2.0.0
  * @package           Simple_Personal_Message
  *
  * @wordpress-plugin
  * Plugin Name:       Simple Personal Message
  * Plugin URI:        http://softyardbd.com/
  * Description:       Simple Personal Message is a Private Messaging system and a secure messaging form to your WordPress site. This is full functioning messaging system from front end and back end. User can send message with each others.
- * Version:           1.0.3
+ * Version:           2.0.0
  * Author:            Md. Shamim Shahnewaz
  * Author URI:        http://softyardbd.com/
  * License:           GPL-2.0+
@@ -66,7 +66,7 @@ require plugin_dir_path(__FILE__) . 'includes/class-simple-personal-message.php'
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.3
+ * @since    2.0.0
  */
 function run_simple_personal_message()
 {

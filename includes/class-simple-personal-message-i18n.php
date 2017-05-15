@@ -7,7 +7,7 @@
  * so that it is ready for translation.
  *
  * @link       http://softyardbd.com/
- * @since      1.0.3
+ * @since      2.0.0
  *
  * @package    Simple_Personal_Message
  * @subpackage Simple_Personal_Message/includes
@@ -19,7 +19,7 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @since      1.0.3
+ * @since      2.0.0
  * @package    Simple_Personal_Message
  * @subpackage Simple_Personal_Message/includes
  * @author     Md. Shamim Shahnewaz <shamimshahnewaz@outlook.com>
@@ -31,7 +31,7 @@ class Simple_Personal_Message_i18n
     /**
      * Load the plugin text domain for translation.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      */
     public function load_plugin_textdomain()
     {

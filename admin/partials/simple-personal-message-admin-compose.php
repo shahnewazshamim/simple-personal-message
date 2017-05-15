@@ -6,7 +6,7 @@
  * This file is used to markup the Compose message form.
  *
  * @link       http://softyardbd.com/
- * @since      1.0.3
+ * @since      2.0.0
  *
  * @package    Simple_Personal_Message
  * @subpackage Simple_Personal_Message/admin/partials

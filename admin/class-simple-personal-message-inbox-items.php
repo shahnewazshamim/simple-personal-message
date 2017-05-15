@@ -4,7 +4,7 @@
  * The table view of inbox functionality of the plugin.
  *
  * @link       http://softyardbd.com/
- * @since      1.0.3
+ * @since      2.0.0
  *
  * @package    Simple_Personal_Message
  * @subpackage Simple_Personal_Message/admin
@@ -25,7 +25,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * The array data of table.
      *
-     * @since  1.0.3
+     * @since  2.0.0
      *
      * @access public
      * @var array
@@ -36,7 +36,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Show per page message.
      *
-     * @since  1.0.3
+     * @since  2.0.0
      *
      * @access public
      * @var integer
@@ -47,7 +47,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Simple_Personal_Message_Inbox_Items constructor.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param string $args
      */
@@ -72,7 +72,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * No message found alert.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function no_items()
     {
@@ -83,7 +83,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Render checkbox for all rows.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param object $item The current list item.
      *
@@ -98,7 +98,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Default column behaviour.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param object $item The current item.
      * @param string $column_name
@@ -132,7 +132,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Action links add to subject column.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $item The current item.
      *
@@ -171,7 +171,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Render bulk option drop down list.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return array <option> list.
      */
@@ -194,7 +194,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Prepare items to display such as pagination sorting.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function prepare_items()
     {
@@ -243,7 +243,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Return necessary columns for list table.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return array
      */
@@ -270,7 +270,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Return hidden columns.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return array
      */
@@ -283,7 +283,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Return sortable columns for list table.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return array
      */
@@ -310,7 +310,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Return inbox items into data array.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return array|mixed|object data array.
      */
@@ -331,7 +331,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Process bulk action for 'deletes', 'unreads' and 'reads'.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function process_bulk_action()
     {
@@ -370,7 +370,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Generates content for a single row of the table
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param object $item The current item.
      */
@@ -391,7 +391,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Unread message style.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return string
      */
@@ -427,7 +427,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Read message style.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return string
      */
@@ -464,7 +464,7 @@ class Simple_Personal_Message_Inbox_Items extends WP_List_Table
     /**
      * Sorting data of table and Return result.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $a
      * @param $b
