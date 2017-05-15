@@ -1,9 +1,9 @@
 === Simple Personal Message ===
-Contributors: mdshamimshahnewaz, lutforrahman
+Contributors: mdshamimshahnewaz
 Donate link:
 Tags: ajax message, user message, personal message, personal messages, private message, email, pm, backend pm, mail, message, page, personal message, plugin, private messages, shortcode, sidebar, message widget,
 Requires at least: 3.5
-Tested up to: 4.6.1
+Tested up to: 4.7.4
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
