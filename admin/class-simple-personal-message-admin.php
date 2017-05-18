@@ -96,6 +96,19 @@ class Simple_Personal_Message_Admin
 
         wp_enqueue_style(
 
+            $this->plugin_name . '-bootstrap-select',
+
+            plugin_dir_url(__FILE__) . 'css/bootstrap-select.min.css',
+
+            array(),
+
+            $this->version,
+
+            'all'
+        );
+
+        wp_enqueue_style(
+
             $this->plugin_name . '-font-awesome',
 
             plugin_dir_url(__FILE__) . 'fonts/font-awesome-4.7.0/css/font-awesome.min.css',
@@ -199,6 +212,20 @@ class Simple_Personal_Message_Admin
             $this->plugin_name . '-bootstrap',
 
             plugin_dir_url(__FILE__) . 'js/bootstrap.min.js',
+
+            array('jquery'),
+
+            $this->version,
+
+            FALSE
+
+        );
+
+        wp_enqueue_script(
+
+            $this->plugin_name . '-bootstrap-select',
+
+            plugin_dir_url(__FILE__) . 'js/bootstrap-select.min.js',
 
             array('jquery'),
 
@@ -374,9 +401,9 @@ class Simple_Personal_Message_Admin
 
         add_options_page(
 
-            'Simple personal Message Settings', // Page Title
+            'Simple personal Message Options', // Page Title
 
-            'SPM Settings', // Top Level Menu
+            'SPM Options', // Top Level Menu
 
             'manage_options', // Capabilities
 
@@ -408,7 +435,7 @@ class Simple_Personal_Message_Admin
 
             $this->plugin_name,
 
-            'Inbox',
+            'Inbox List',
 
             'SPM Inbox ' . '<span class="update-plugins"><span class="plugin-count">' . $this->unread_count() . '</span></span>',
 
@@ -424,7 +451,7 @@ class Simple_Personal_Message_Admin
 
             'simple-personal-message',
 
-            'Compose Your Message',
+            'Start Writing',
 
             'SPM Compose',
 
@@ -440,7 +467,7 @@ class Simple_Personal_Message_Admin
 
             'simple-personal-message',
 
-            'Outbox',
+            'Outbox List',
 
             'SPM Outbox',
 
@@ -456,7 +483,7 @@ class Simple_Personal_Message_Admin
 
             'simple-personal-message',
 
-            'Trash',
+            'Trash List',
 
             'SPM Trash',
 
@@ -472,9 +499,9 @@ class Simple_Personal_Message_Admin
 
             'simple-personal-message',
 
-            'Personalize Your Inbox',
+            'Personalize',
 
-            'Personalize Inbox',
+            'Personalize',
 
             'read',
 
@@ -870,13 +897,13 @@ class Simple_Personal_Message_Admin
 
         add_users_page(
 
-            esc_attr($tax->labels->menu_name),
+            esc_attr(esc_sql($tax->labels->menu_name)),
 
-            esc_attr($tax->labels->menu_name),
+            esc_attr(esc_sql($tax->labels->menu_name)),
 
             $tax->cap->manage_terms,
 
-            'edit-tags.php?taxonomy=' . esc_attr($tax->name)
+            'edit-tags.php?taxonomy=' . esc_attr(esc_sql($tax->name))
 
         );
 
@@ -948,7 +975,7 @@ class Simple_Personal_Message_Admin
     public function save_user_group_from_profile($user_id)
     {
 
-        $user_groups = esc_attr($_POST['spm_user_groups']);
+        $user_groups = esc_attr(esc_sql($_POST['spm_user_groups']));
 
         $groups = array_unique(array_map('intval', $user_groups));
 
@@ -1179,13 +1206,13 @@ class Simple_Personal_Message_Admin
     public function assign_user_to_group_ajax_request()
     {
 
-        $user_ids = esc_attr($_REQUEST['user_ids']);
+        $user_ids = esc_attr(esc_sql($_REQUEST['user_ids']));
 
         $user_ids = trim($user_ids, 'on,');
 
         $user_ids = explode(',', $user_ids);
 
-        $user_groups[] = esc_attr($_POST['spm_user_group']);
+        $user_groups[] = esc_attr(esc_sql($_POST['spm_user_group']));
 
         $groups = array_unique(array_map('intval', $user_groups));
 
@@ -1224,11 +1251,11 @@ class Simple_Personal_Message_Admin
 
                 $user_ids = array();
 
-                $spm_user_groups = explode(',', esc_attr($_GET['spm-user-group']));
+                $spm_user_groups = explode(',', esc_attr(esc_sql($_GET['spm-user-group'])));
 
                 foreach ($spm_user_groups as $spm_user_group) {
 
-                    $user_term = get_term_by('slug', esc_attr($spm_user_group), 'spm-user-group');
+                    $user_term = get_term_by('slug', esc_attr(esc_sql($spm_user_group), 'spm-user-group'));
 
                     $all_users = get_objects_in_term($user_term->term_id, 'spm-user-group');
 
@@ -1418,7 +1445,7 @@ class Simple_Personal_Message_Admin
 
         global $wpdb;
 
-        $id = esc_attr($id);
+        $id = esc_attr(esc_sql(($id)));
 
         $table_name = $wpdb->prefix . 'spm_message';
 
@@ -1677,7 +1704,7 @@ class Simple_Personal_Message_Admin
 
                 $table_name = $wpdb->prefix . 'spm_message';
 
-                $sender = esc_attr($_POST['sender']);
+                $sender = esc_attr(esc_sql(($_POST['sender'])));
 
                 $id = isset($_POST['id']) ? esc_sql($_POST['id']) : NULL;
 
@@ -1693,13 +1720,13 @@ class Simple_Personal_Message_Admin
 
                 }
 
-                $receivers = esc_attr($_POST['receiver']);
+                $receivers = esc_attr(esc_sql($_POST['receiver']));
 
                 $receiver_group = array();
 
                 $email_group = array();
 
-                if (esc_attr($_POST['group']) == 'all') {
+                if (esc_attr(esc_sql(($_POST['group']) == 'all'))) {
 
                     $users = get_users(array('fields' => array('user_login', 'user_email')));
 
@@ -1713,7 +1740,7 @@ class Simple_Personal_Message_Admin
 
                 }
 
-                $term = get_term_by('slug', esc_attr($_POST['group']), 'spm-user-group');
+                $term = get_term_by('slug', esc_attr(esc_sql($_POST['group']), 'spm-user-group'));
 
                 $user_ids = get_objects_in_term($term->term_id, 'spm-user-group');
 
@@ -1785,7 +1812,7 @@ class Simple_Personal_Message_Admin
 
                             $message['success'] = TRUE;
 
-                            if ($email['enable'] == 'enable') {
+                            if ($email || $email == '1') {
 
                                 $this->send_email_notification($receiver_email, $sender);
 
@@ -1870,9 +1897,11 @@ class Simple_Personal_Message_Admin
 Hi, <br>
 You have got a new message from $receiver. <br>
 <a href='$url'>View conversation on $site</a> <br><br>
+<address>
 Regards <br>
 $site Teams
-
+Powered by <a href="http://softyardbd.com" target="_blank"></a>
+</address>
 MESSAGE;
 
         wp_mail($receiver, $subject, $message, $headers);
@@ -1896,7 +1925,7 @@ MESSAGE;
 
                 'orderby' => 'display_name',
 
-                'search' => '*' . esc_attr($_REQUEST['term']) . '*',
+                'search' => '*' . esc_attr(esc_sql($_REQUEST['term'])) . '*',
 
                 'search_columns' => array('user_login', 'user_nicename', 'user_email',),
             );
@@ -2003,7 +2032,7 @@ MESSAGE;
 
                 $meta_value = get_user_meta(get_current_user_id(), $meta_key, TRUE);
 
-                if ($meta_value != esc_attr($_POST[$meta_key])) {
+                if ($meta_value != esc_attr(esc_sql($_POST[$meta_key]))) {
 
                     update_user_meta(get_current_user_id(), $meta_key, esc_sql($_POST[$meta_key]));
 

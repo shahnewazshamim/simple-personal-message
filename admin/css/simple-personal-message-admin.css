@@ -128,3 +128,15 @@ legend {
     padding: 5px 11px 5px 10px;
     background-color: #ffffff;
 }
+
+.text-smaller {
+    font-size: 12px;
+}
+
+.viewport-height {
+    min-height: 75vh !important;
+}
+
+.wp-editor-container, .wp-editor-container iframe {
+    min-height: 58vh;
+}
