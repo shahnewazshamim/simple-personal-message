@@ -1,9 +1,9 @@
 === Simple Personal Message ===
-Contributors: mdshamimshahnewaz, lutforrahman
+Contributors: mdshamimshahnewaz
 Donate link:
 Tags: ajax message, user message, personal message, personal messages, private message, email, pm, backend pm, mail, message, page, personal message, plugin, private messages, shortcode, sidebar, message widget,
 Requires at least: 3.5
-Tested up to: 4.6.1
+Tested up to: 4.7.4
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,7 +63,7 @@ Thank you for being with us. Please visit - <a href='http://softyardbd.com/simpl
 3. Activate the plugin through the 'Plugins' screen in WordPress.
 4. Go to Settings > SPM Settings to configure plugin.
 
-For more guide please read the documentation on your plugin root directory `SPM_Documentation`.
+For more guide please read the documentation on your plugin root directory `docs`.
 
 == Frequently Asked Questions ==
 

@@ -10,7 +10,7 @@ Download: https://wordpress.org/plugins/simple-personal-message/
 
 ### Uses
 
-Using of Simple Personal Message is very easy and find the descriptive documentation on your plugin directory `SPM_Documentation`.
+Using of Simple Personal Message is very easy and find the descriptive documentation on your plugin directory `docs`.
 
 ### System Key Features
 
@@ -35,7 +35,7 @@ Using of Simple Personal Message is very easy and find the descriptive documenta
 - Inbox counter indicator
 
 ### Demo and Documentation
-* Simple Personal Message Documentation: http://www.softyardbd.com/simple-personal-message/
+* Find the `docs` directory under your plugin `root` directory
 
 ### Youtube Video
 * Youtube Video Link: comming soon
@@ -47,7 +47,7 @@ Using of Simple Personal Message is very easy and find the descriptive documenta
 3. Activate the plugin through the 'Plugins' screen in WordPress.
 4. Go to Settings > SPM Settings to configure plugin.
 
-For more guide please read the documentation on your plugin root directory `SPM_Documentation`.
+For more guide please read the documentation on your plugin root directory `docs`.
 
 ### Frequently Asked Questions
 

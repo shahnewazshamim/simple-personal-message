@@ -34,7 +34,7 @@
         /**
          * Sending Message.
          *
-         * @since 1.0.3
+         * @since 2.0.0
          */
 
         jQuery('#btn-send-message').click(function () {
@@ -117,7 +117,7 @@
         /**
          * Loading user list by typing keyword.
          *
-         * @since 1.0.3
+         * @since 2.0.0
          */
 
 
@@ -189,7 +189,7 @@
         /**
          * Save personalize settings.
          *
-         * @since 1.0.3
+         * @since 2.0.0
          */
 
         jQuery('#btn-save-personalize').click(function () {

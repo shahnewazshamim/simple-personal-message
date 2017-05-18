@@ -6,7 +6,7 @@
  * This file is used to markup the Message detail view.
  *
  * @link       http://softyardbd.com/
- * @since      1.0.3
+ * @since      2.0.0
  *
  * @package    Simple_Personal_Message
  * @subpackage Simple_Personal_Message/admin/partials
@@ -21,11 +21,11 @@ global $wpdb;
 
 $table = $wpdb->prefix . 'spm_message';
 
-$id = esc_attr($_GET['message']);
+$id = esc_attr( esc_sql( $_GET['message'] ) );
 
-$message = $wpdb->get_results("SELECT * FROM $table WHERE id = $id");
+$message = $wpdb->get_results( "SELECT * FROM $table WHERE id = $id" );
 
-$user = get_user_by('login', $message[0]->sender);
+$user = get_user_by( 'login', $message[0]->sender );
 
 ?>
 
@@ -41,7 +41,9 @@ $user = get_user_by('login', $message[0]->sender);
 
                     <div class="media-left">
 
-                        <img width="95" height="95" class="media-object img-rounded" src="<?php echo plugin_dir_url(__DIR__) . 'img/default.jpg' ?>" alt="<?php echo $user->first_name . ' ' . $user->last_name; ?>">
+                        <img width="95" height="95" class="media-object img-rounded"
+                             src="<?php echo plugin_dir_url( __DIR__ ) . 'img/default.jpg' ?>"
+                             alt="<?php echo $user->first_name . ' ' . $user->last_name; ?>">
 
                     </div>
 
@@ -51,23 +53,29 @@ $user = get_user_by('login', $message[0]->sender);
 
                         <div class="btn-group btn-group-sm pull-right">
 
-                            <?php if ($_REQUEST['page'] != 'simple-personal-message-outbox'): ?>
+							<?php if ( $_REQUEST['page'] != 'simple-personal-message-outbox' ): ?>
 
-                                <a class="btn btn-default" title="Reply" href="<?= wp_nonce_url("?page=simple-personal-message-compose&action=reply&message=" . $id . "", 'reply-message_%s') ?>"><i class="fa fa-reply" aria-hidden="true"></i></a>
+                                <a class="btn btn-default" title="Reply"
+                                   href="<?= wp_nonce_url( "?page=simple-personal-message-compose&action=reply&message=" . $id . "", 'reply-message_%s' ) ?>"><i
+                                            class="fa fa-reply" aria-hidden="true"></i></a>
 
-                            <?php endif; ?>
+							<?php endif; ?>
 
-                            <a class="btn btn-default" title="Forward" href="<?= wp_nonce_url("?page=simple-personal-message-compose&action=forward&message=" . $id . "", 'forward-message_%s') ?>"><i class="fa fa-share" aria-hidden="true"></i></a>
+                            <a class="btn btn-default" title="Forward"
+                               href="<?= wp_nonce_url( "?page=simple-personal-message-compose&action=forward&message=" . $id . "", 'forward-message_%s' ) ?>"><i
+                                        class="fa fa-share" aria-hidden="true"></i></a>
 
-                            <a class="btn btn-default" title="Delete" href="<?= wp_nonce_url("?page=" . $_REQUEST['page'] . "&action=delete&message=" . $id . "", 'delete-message_%s') ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <a class="btn btn-danger" title="Delete"
+                               href="<?= wp_nonce_url( "?page=" . $_REQUEST['page'] . "&action=delete&message=" . $id . "", 'delete-message_%s' ) ?>"><i
+                                        class="fa fa-trash" aria-hidden="true"></i></a>
 
                         </div>
 
-                        <em class="">
+                        <em class="text-muted text-smaller">
 
-                            <?php echo $user->first_name . ' ' . $user->last_name . " &lt" . $message[0]->sender . "&gt <br>"; ?>
+							<?php echo $user->first_name . ' ' . $user->last_name . " &lt" . $message[0]->sender . "&gt <br>"; ?>
 
-                            <?php echo $message[0]->date; ?>
+							<?php echo $message[0]->date; ?>
 
                         </em>
 
@@ -75,7 +83,7 @@ $user = get_user_by('login', $message[0]->sender);
 
                         <div class="">
 
-                            <?php echo do_shortcode(stripslashes(stripslashes($message[0]->message))); ?>
+							<?php echo do_shortcode( stripslashes( stripslashes( $message[0]->message ) ) ); ?>
 
                         </div>
 

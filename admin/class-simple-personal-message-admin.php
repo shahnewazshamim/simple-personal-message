@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       http://softyardbd.com/
- * @since      1.0.3
+ * @since      2.0.0
  *
  * @package    Simple_Personal_Message
  * @subpackage Simple_Personal_Message/admin
@@ -26,7 +26,7 @@ class Simple_Personal_Message_Admin
     /**
      * The ID of this plugin.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      * @access   private
      * @var      string $plugin_name The ID of this plugin.
      */
@@ -36,7 +36,7 @@ class Simple_Personal_Message_Admin
     /**
      * The version of this plugin.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      * @access   private
      * @var      string $version The current version of this plugin.
      */
@@ -46,7 +46,7 @@ class Simple_Personal_Message_Admin
     /**
      * Initialize the class and set its properties.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      *
      * @param      string $plugin_name The name of this plugin.
      * @param      string $version The version of this plugin.
@@ -62,7 +62,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register the stylesheets for the admin area.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      */
     public function enqueue_styles()
     {
@@ -96,9 +96,22 @@ class Simple_Personal_Message_Admin
 
         wp_enqueue_style(
 
+            $this->plugin_name . '-bootstrap-select',
+
+            plugin_dir_url(__FILE__) . 'css/bootstrap-select.min.css',
+
+            array(),
+
+            $this->version,
+
+            'all'
+        );
+
+        wp_enqueue_style(
+
             $this->plugin_name . '-font-awesome',
 
-            plugin_dir_url(__FILE__) . 'fonts/font-awesome-4.6.2/css/font-awesome.min.css',
+            plugin_dir_url(__FILE__) . 'fonts/font-awesome-4.7.0/css/font-awesome.min.css',
 
             array(),
 
@@ -126,7 +139,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register the Admin for the dashboard area.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function enqueue_dashboard_styles()
     {
@@ -150,7 +163,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register the Admin for the dashboard area.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function enqueue_dashboard_scripts()
     {
@@ -175,7 +188,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register the JavaScript for the admin area.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function enqueue_scripts()
     {
@@ -199,6 +212,20 @@ class Simple_Personal_Message_Admin
             $this->plugin_name . '-bootstrap',
 
             plugin_dir_url(__FILE__) . 'js/bootstrap.min.js',
+
+            array('jquery'),
+
+            $this->version,
+
+            FALSE
+
+        );
+
+        wp_enqueue_script(
+
+            $this->plugin_name . '-bootstrap-select',
+
+            plugin_dir_url(__FILE__) . 'js/bootstrap-select.min.js',
 
             array('jquery'),
 
@@ -242,7 +269,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register the administration admin bar menu for this plugin into the WordPress New Content Dashboard menu.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function add_plugin_admin_bar_node_under_new_content($wp_admin_bar)
     {
@@ -281,7 +308,7 @@ class Simple_Personal_Message_Admin
     /**
      * Return number of unread message.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return int
      */
@@ -304,7 +331,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register the plugin update notice.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      */
     public function add_plugin_update_notice()
     {
@@ -337,7 +364,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register the admin notice for unread message.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      */
     public function add_plugin_admin_notice()
     {
@@ -358,7 +385,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register the administration menu for this plugin into the WordPress Dashboard menu.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function add_plugin_admin_menu()
     {
@@ -374,9 +401,9 @@ class Simple_Personal_Message_Admin
 
         add_options_page(
 
-            'Simple personal Message Settings', // Page Title
+            'Simple personal Message Options', // Page Title
 
-            'SPM Settings', // Top Level Menu
+            'SPM Options', // Top Level Menu
 
             'manage_options', // Capabilities
 
@@ -408,7 +435,7 @@ class Simple_Personal_Message_Admin
 
             $this->plugin_name,
 
-            'Inbox',
+            'Inbox List',
 
             'SPM Inbox ' . '<span class="update-plugins"><span class="plugin-count">' . $this->unread_count() . '</span></span>',
 
@@ -424,7 +451,7 @@ class Simple_Personal_Message_Admin
 
             'simple-personal-message',
 
-            'Compose Your Message',
+            'Start Writing',
 
             'SPM Compose',
 
@@ -440,7 +467,7 @@ class Simple_Personal_Message_Admin
 
             'simple-personal-message',
 
-            'Outbox',
+            'Outbox List',
 
             'SPM Outbox',
 
@@ -456,7 +483,7 @@ class Simple_Personal_Message_Admin
 
             'simple-personal-message',
 
-            'Trash',
+            'Trash List',
 
             'SPM Trash',
 
@@ -472,9 +499,9 @@ class Simple_Personal_Message_Admin
 
             'simple-personal-message',
 
-            'Personalize Your Inbox',
+            'Personalize',
 
-            'Personalize Inbox',
+            'Personalize',
 
             'read',
 
@@ -490,7 +517,7 @@ class Simple_Personal_Message_Admin
     /**
      * Add settings action link to the plugins page.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function add_action_links($links)
     {
@@ -508,7 +535,7 @@ class Simple_Personal_Message_Admin
     /**
      * Render the settings page for this plugin.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function display_plugin_setup_page()
     {
@@ -519,7 +546,7 @@ class Simple_Personal_Message_Admin
     /**
      * Render the Inbox page for this plugin.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function display_plugin_inbox_page()
     {
@@ -530,7 +557,7 @@ class Simple_Personal_Message_Admin
     /**
      * Render the Inbox page for this plugin.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function display_plugin_outbox_page()
     {
@@ -541,7 +568,7 @@ class Simple_Personal_Message_Admin
     /**
      * Render the Sent Items page for this plugin.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function display_plugin_sent_page()
     {
@@ -572,7 +599,7 @@ class Simple_Personal_Message_Admin
     /**
      * Return number of unread message.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return int
      */
@@ -596,7 +623,7 @@ class Simple_Personal_Message_Admin
     /**
      * Render the Trash page for this plugin.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      */
     public function display_plugin_trash_page()
     {
@@ -607,7 +634,7 @@ class Simple_Personal_Message_Admin
     /**
      * Render the Personalize page for this plugin.
      *
-     * @since    1.0.3
+     * @since    2.0.0
      */
     public function display_plugin_settings_page()
     {
@@ -618,7 +645,7 @@ class Simple_Personal_Message_Admin
     /**
      * Render the Sent Logs page for this plugin.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function display_plugin_view_page()
     {
@@ -637,7 +664,7 @@ class Simple_Personal_Message_Admin
     /**
      * Mark as read a single message from inbox list.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function mark_as_read($message_id)
     {
@@ -660,7 +687,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register spm Dashboard widget.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function spm_dashboard_widget()
     {
@@ -685,7 +712,7 @@ class Simple_Personal_Message_Admin
     /**
      * Render the Dashboard widget page for this plugin.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function spm_dashboard_widget_display()
     {
@@ -696,7 +723,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register user meta for SPM message.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function register_user_meta()
     {
@@ -721,7 +748,7 @@ class Simple_Personal_Message_Admin
     /**
      * SPM message user meta fields.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return array
      */
@@ -754,7 +781,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register Settings.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function register_option_settings()
     {
@@ -769,7 +796,7 @@ class Simple_Personal_Message_Admin
     /**
      * Register user group taxonomies.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function register_user_group_taxonomies()
     {
@@ -840,7 +867,7 @@ class Simple_Personal_Message_Admin
     /**
      * @param $username
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return bool
      */
@@ -861,7 +888,7 @@ class Simple_Personal_Message_Admin
     /**
      * Add plugin user group to admin menu.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function add_plugin_user_group_menu()
     {
@@ -870,13 +897,13 @@ class Simple_Personal_Message_Admin
 
         add_users_page(
 
-            esc_attr($tax->labels->menu_name),
+            esc_attr(esc_sql($tax->labels->menu_name)),
 
-            esc_attr($tax->labels->menu_name),
+            esc_attr(esc_sql($tax->labels->menu_name)),
 
             $tax->cap->manage_terms,
 
-            'edit-tags.php?taxonomy=' . esc_attr($tax->name)
+            'edit-tags.php?taxonomy=' . esc_attr(esc_sql($tax->name))
 
         );
 
@@ -943,12 +970,12 @@ class Simple_Personal_Message_Admin
      *
      * @param $user_id
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function save_user_group_from_profile($user_id)
     {
 
-        $user_groups = esc_attr($_POST['spm_user_groups']);
+        $user_groups = esc_attr(esc_sql($_POST['spm_user_groups']));
 
         $groups = array_unique(array_map('intval', $user_groups));
 
@@ -964,7 +991,7 @@ class Simple_Personal_Message_Admin
      *
      * @param $user_id
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function delete_user_group_from_user($user_id)
     {
@@ -977,7 +1004,7 @@ class Simple_Personal_Message_Admin
      *
      * @param $column
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return mixed
      */
@@ -994,7 +1021,7 @@ class Simple_Personal_Message_Admin
     /**
      * SPM Group column items showing on user list table.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $display
      * @param $column
@@ -1029,7 +1056,7 @@ class Simple_Personal_Message_Admin
      *
      * @param string $parent
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return string
      */
@@ -1055,7 +1082,7 @@ class Simple_Personal_Message_Admin
      * @param $actions
      * @param $term
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return mixed
      */
@@ -1075,7 +1102,7 @@ class Simple_Personal_Message_Admin
      * @param $terms
      * @param $taxonomy
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function update_spm_user_group_count($terms, $taxonomy)
     {
@@ -1100,7 +1127,7 @@ class Simple_Personal_Message_Admin
     /**
      * Render bulk group update drop down.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function bulk_user_group_edit()
     {
@@ -1143,7 +1170,7 @@ class Simple_Personal_Message_Admin
     /**
      * Return all user groups.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return array|int|null|WP_Error
      */
@@ -1174,18 +1201,18 @@ class Simple_Personal_Message_Admin
     /**
      * Assign user to spm group from user list.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function assign_user_to_group_ajax_request()
     {
 
-        $user_ids = esc_attr($_REQUEST['user_ids']);
+        $user_ids = esc_attr(esc_sql($_REQUEST['user_ids']));
 
         $user_ids = trim($user_ids, 'on,');
 
         $user_ids = explode(',', $user_ids);
 
-        $user_groups[] = esc_attr($_POST['spm_user_group']);
+        $user_groups[] = esc_attr(esc_sql($_POST['spm_user_group']));
 
         $groups = array_unique(array_map('intval', $user_groups));
 
@@ -1211,7 +1238,7 @@ class Simple_Personal_Message_Admin
      *
      * @param string $query
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function modify_user_query($query = '')
     {
@@ -1224,11 +1251,11 @@ class Simple_Personal_Message_Admin
 
                 $user_ids = array();
 
-                $spm_user_groups = explode(',', esc_attr($_GET['spm-user-group']));
+                $spm_user_groups = explode(',', esc_attr(esc_sql($_GET['spm-user-group'])));
 
                 foreach ($spm_user_groups as $spm_user_group) {
 
-                    $user_term = get_term_by('slug', esc_attr($spm_user_group), 'spm-user-group');
+                    $user_term = get_term_by('slug', esc_attr(esc_sql($spm_user_group), 'spm-user-group'));
 
                     $all_users = get_objects_in_term($user_term->term_id, 'spm-user-group');
 
@@ -1258,7 +1285,7 @@ class Simple_Personal_Message_Admin
     /**
      * Mark as unread a single message from inbox list.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function mark_as_unread($message_id)
     {
@@ -1281,7 +1308,7 @@ class Simple_Personal_Message_Admin
     /**
      * Message soft delete for sender and receiver.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $id
      */
@@ -1312,7 +1339,7 @@ class Simple_Personal_Message_Admin
     /**
      * Bulk message soft delete for sender and receiver .
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $ids
      */
@@ -1345,7 +1372,7 @@ class Simple_Personal_Message_Admin
     /**
      * Message restore for sender and receiver.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $id
      */
@@ -1376,7 +1403,7 @@ class Simple_Personal_Message_Admin
     /**
      * Bulk message restore for sender and receiver .
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $ids
      */
@@ -1409,7 +1436,7 @@ class Simple_Personal_Message_Admin
     /**
      * Message delete permanently for sender and receiver.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $id
      */
@@ -1418,7 +1445,7 @@ class Simple_Personal_Message_Admin
 
         global $wpdb;
 
-        $id = esc_attr($id);
+        $id = esc_attr(esc_sql(($id)));
 
         $table_name = $wpdb->prefix . 'spm_message';
 
@@ -1440,7 +1467,7 @@ class Simple_Personal_Message_Admin
     /**
      * Bulk message delete permanently for sender and receiver .
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $ids
      */
@@ -1473,7 +1500,7 @@ class Simple_Personal_Message_Admin
     /**
      * Bulk message delete permanently of sender and receiver while reached the keep limit.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function schedule_message_delete()
     {
@@ -1550,7 +1577,7 @@ class Simple_Personal_Message_Admin
     /**
      * Get message details by receiver.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $receiver
      *
@@ -1575,7 +1602,7 @@ class Simple_Personal_Message_Admin
     /**
      * Get message details by sender.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $sender
      *
@@ -1600,7 +1627,7 @@ class Simple_Personal_Message_Admin
     /**
      * Bulk message mark as read .
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $ids
      */
@@ -1629,7 +1656,7 @@ class Simple_Personal_Message_Admin
     /**
      * Bulk message mark as unread.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $ids
      */
@@ -1658,7 +1685,7 @@ class Simple_Personal_Message_Admin
     /**
      * Send Message Using Ajax.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function send_message_ajax_request()
     {
@@ -1677,7 +1704,7 @@ class Simple_Personal_Message_Admin
 
                 $table_name = $wpdb->prefix . 'spm_message';
 
-                $sender = esc_attr($_POST['sender']);
+                $sender = esc_attr(esc_sql(($_POST['sender'])));
 
                 $id = isset($_POST['id']) ? esc_sql($_POST['id']) : NULL;
 
@@ -1693,13 +1720,13 @@ class Simple_Personal_Message_Admin
 
                 }
 
-                $receivers = esc_attr($_POST['receiver']);
+                $receivers = esc_attr(esc_sql($_POST['receiver']));
 
                 $receiver_group = array();
 
                 $email_group = array();
 
-                if (esc_attr($_POST['group']) == 'all') {
+                if (esc_attr(esc_sql(($_POST['group']) == 'all'))) {
 
                     $users = get_users(array('fields' => array('user_login', 'user_email')));
 
@@ -1713,7 +1740,7 @@ class Simple_Personal_Message_Admin
 
                 }
 
-                $term = get_term_by('slug', esc_attr($_POST['group']), 'spm-user-group');
+                $term = get_term_by('slug', esc_attr(esc_sql($_POST['group']), 'spm-user-group'));
 
                 $user_ids = get_objects_in_term($term->term_id, 'spm-user-group');
 
@@ -1785,7 +1812,7 @@ class Simple_Personal_Message_Admin
 
                             $message['success'] = TRUE;
 
-                            if ($email['enable'] == 'enable') {
+                            if ($email || $email == '1') {
 
                                 $this->send_email_notification($receiver_email, $sender);
 
@@ -1821,7 +1848,7 @@ class Simple_Personal_Message_Admin
     /**
      *  Get message details by id.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $id
      *
@@ -1846,7 +1873,7 @@ class Simple_Personal_Message_Admin
     /**
      * Send email notification to receiver while enable email notification.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @param $receiver
      * @param $sender
@@ -1870,9 +1897,11 @@ class Simple_Personal_Message_Admin
 Hi, <br>
 You have got a new message from $receiver. <br>
 <a href='$url'>View conversation on $site</a> <br><br>
+<address>
 Regards <br>
 $site Teams
-
+Powered by <a href="http://softyardbd.com" target="_blank"></a>
+</address>
 MESSAGE;
 
         wp_mail($receiver, $subject, $message, $headers);
@@ -1883,7 +1912,7 @@ MESSAGE;
     /**
      * Load user list by user name wildcard.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function load_user_list_ajax_request()
     {
@@ -1896,7 +1925,7 @@ MESSAGE;
 
                 'orderby' => 'display_name',
 
-                'search' => '*' . esc_attr($_REQUEST['term']) . '*',
+                'search' => '*' . esc_attr(esc_sql($_REQUEST['term'])) . '*',
 
                 'search_columns' => array('user_login', 'user_nicename', 'user_email',),
             );
@@ -1925,7 +1954,7 @@ MESSAGE;
     /**
      * Get Inbox items by user login name.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return Inbox items.
      */
@@ -1946,7 +1975,7 @@ MESSAGE;
     /**
      * Get Outbox items by user login name.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return Outbox items.
      */
@@ -1967,7 +1996,7 @@ MESSAGE;
     /**
      * Get Trash items by user login name.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return Trash items.
      */
@@ -1988,7 +2017,7 @@ MESSAGE;
     /**
      * Save user personalize settings.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      */
     public function save_personalize_ajax_request()
     {
@@ -2003,7 +2032,7 @@ MESSAGE;
 
                 $meta_value = get_user_meta(get_current_user_id(), $meta_key, TRUE);
 
-                if ($meta_value != esc_attr($_POST[$meta_key])) {
+                if ($meta_value != esc_attr(esc_sql($_POST[$meta_key]))) {
 
                     update_user_meta(get_current_user_id(), $meta_key, esc_sql($_POST[$meta_key]));
 
@@ -2024,9 +2053,9 @@ MESSAGE;
     /**
      * Get Outbox items by user login name.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
-     * @return Personalize options items.
+     * @return mixed.
      */
     public function load_personalize_by_user()
     {
@@ -2048,7 +2077,7 @@ MESSAGE;
     /**
      * Set HTML Content type for WP MAIL.
      *
-     * @since 1.0.3
+     * @since 2.0.0
      *
      * @return string
      */

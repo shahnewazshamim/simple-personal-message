@@ -20,7 +20,7 @@
  * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
  *
  * @link       http://softyardbd.com/
- * @since      1.0.3
+ * @since      2.0.0
  *
  * @package    Simple_Personal_Message
  */
@@ -40,7 +40,7 @@ require_once plugin_dir_path(__FILE__) . 'admin/class-simple-personal-message-ad
 /**
  * Uninstall user meta keys and option fileds.
  *
- * @since 1.0.3
+ * @since 2.0.0
  */
 function uninstall()
 {
