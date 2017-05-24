@@ -652,9 +652,9 @@ class Simple_Personal_Message_Admin
 
         include_once('partials/simple-personal-message-admin-view.php');
 
-        if (isset($_REQUEST['message']) && $_REQUEST['page'] != 'simple-personal-message-outbox') {
+        if (isset($_REQUEST['message']) && intval($_REQUEST['message']) && $_REQUEST['page'] != 'simple-personal-message-outbox') {
 
-            $this->mark_as_read($_REQUEST['message']);
+            $this->mark_as_read(esc_html($_REQUEST['message']));
 
         }
 
@@ -1152,11 +1152,11 @@ class Simple_Personal_Message_Admin
 
         echo "</select> ";
 
-        echo "<input type='button' value='Change' id='btn_update' name='btn_update' class='button'> ";
+        echo "<input type='button' value='Change' id='btn_update' name='btn_update' class='button'>&nbsp; &nbsp;";
 
         if (!empty($_GET[get_taxonomy('spm-user-group')->name])) {
 
-            echo "<a href='" . admin_url('users.php') . "' class='button'> All Users</a>";
+            echo "<a href='" . admin_url('users.php') . "'>All Users</a>";
 
         }
 
@@ -1206,21 +1206,21 @@ class Simple_Personal_Message_Admin
     public function assign_user_to_group_ajax_request()
     {
 
-        $user_ids = esc_attr(esc_sql($_REQUEST['user_ids']));
+        $user_ids = $_REQUEST['user_ids'];
 
         $user_ids = trim($user_ids, 'on,');
 
         $user_ids = explode(',', $user_ids);
 
-        $user_groups[] = esc_attr(esc_sql($_POST['spm_user_group']));
+        $user_groups[] = intval($_POST['spm_user_group']);
 
         $groups = array_unique(array_map('intval', $user_groups));
 
         foreach ($user_ids as $user_id) {
 
-            wp_set_object_terms($user_id, $groups, 'spm-user-group', FALSE);
+            wp_set_object_terms(esc_sql(esc_html($user_id)), $groups, 'spm-user-group', FALSE);
 
-            clean_object_term_cache($user_id, 'spm-user-group');
+            clean_object_term_cache(esc_sql(esc_html($user_id)), 'spm-user-group');
 
         }
 
@@ -1251,17 +1251,13 @@ class Simple_Personal_Message_Admin
 
                 $user_ids = array();
 
-                $spm_user_groups = explode(',', esc_attr(esc_sql($_GET['spm-user-group'])));
+                $spm_user_group = esc_html($_GET['spm-user-group']);
 
-                foreach ($spm_user_groups as $spm_user_group) {
+	            $user_term = get_term_by('slug', esc_sql($spm_user_group), 'spm-user-group');
 
-                    $user_term = get_term_by('slug', esc_attr(esc_sql($spm_user_group), 'spm-user-group'));
+	            $all_users = get_objects_in_term($user_term->term_id, 'spm-user-group');
 
-                    $all_users = get_objects_in_term($user_term->term_id, 'spm-user-group');
-
-                    $user_ids = array_merge($all_users, $user_ids);
-
-                }
+	            $user_ids = array_merge($all_users, $user_ids);
 
                 if (!empty($all_users)) {
 
@@ -1700,13 +1696,13 @@ class Simple_Personal_Message_Admin
 
                 $email = get_option('spm_message_email_options');
 
+                $sender = sanitize_user($_POST['sender']);
+
                 global $wpdb;
 
                 $table_name = $wpdb->prefix . 'spm_message';
 
-                $sender = esc_attr(esc_sql(($_POST['sender'])));
-
-                $id = isset($_POST['id']) ? esc_sql($_POST['id']) : NULL;
+                $id = (isset($_POST['id']) && intval($_POST['id'])) ? esc_sql($_POST['id']) : NULL;
 
                 if ($id != NULL) {
 
@@ -1720,13 +1716,33 @@ class Simple_Personal_Message_Admin
 
                 }
 
-                $receivers = esc_attr(esc_sql($_POST['receiver']));
+                $receivers = sanitize_user($_POST['receiver']);
+
+                if($receivers != '') {
+
+                	$usernames = explode(',', $receivers);
+
+	                $receivers_array = array();
+
+                	foreach ($usernames as $username) {
+
+                		if(username_exists($username)) {
+
+			                $receivers_array[] = $username;
+
+		                }
+
+	                }
+
+	                $receivers = implode(',', $receivers_array);
+
+                }
 
                 $receiver_group = array();
 
                 $email_group = array();
 
-                if (esc_attr(esc_sql(($_POST['group']) == 'all'))) {
+                if (esc_attr(esc_sql(($_POST['group']) === 'all'))) {
 
                     $users = get_users(array('fields' => array('user_login', 'user_email')));
 
@@ -1774,7 +1790,7 @@ class Simple_Personal_Message_Admin
                     unset($email_group[$key]);
                 }
 
-                $subject = $_POST['subject'];
+                $subject = esc_html($_POST['subject']);
 
                 $content = $_POST['content'];
 
