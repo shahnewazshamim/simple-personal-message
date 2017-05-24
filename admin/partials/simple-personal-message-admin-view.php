@@ -21,7 +21,7 @@ global $wpdb;
 
 $table = $wpdb->prefix . 'spm_message';
 
-$id = esc_html( esc_sql( $_GET['message'] ) );
+$id = (isset($_GET['message']) && intval($_GET['message'])) ? esc_html( esc_sql( $_GET['message'] ) ) : '';
 
 $message = $wpdb->get_results( "SELECT * FROM $table WHERE id = $id" );
 

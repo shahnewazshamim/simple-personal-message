@@ -17,8 +17,8 @@
 <?php
 $message = new Simple_Personal_Message_Admin( '', '' );
 $groups  = $message->load_user_groups();
-if ( isset( $_GET['message'] ) and $_GET['action'] ) {
-	$id = esc_attr( esc_sql( $_GET['message'] ) );
+if ( isset( $_GET['message'] ) and intval( $_GET['message'] ) and $_GET['action'] ) {
+	$id = esc_sql( $_GET['message'] );
 	$message->mark_as_read( $id );
 	$result  = $message->get_message_by_id( $id );
 	$subject = $result[0]->subject;
