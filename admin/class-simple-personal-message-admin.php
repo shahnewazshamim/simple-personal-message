@@ -1212,8 +1212,6 @@ class Simple_Personal_Message_Admin
 
         $user_ids = explode(',', $user_ids);
 
-        $user_groups[] = intval($_POST['spm_user_group']);
-
         $groups = array_unique(array_map('intval', $_POST['spm_user_group']));
 
         foreach ($user_ids as $user_id) {
