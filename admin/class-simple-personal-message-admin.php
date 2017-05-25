@@ -1206,7 +1206,7 @@ class Simple_Personal_Message_Admin
     public function assign_user_to_group_ajax_request()
     {
 
-        $user_ids = $_REQUEST['user_ids'];
+        $user_ids = sanitize_text_field($_REQUEST['user_ids']);
 
         $user_ids = trim($user_ids, 'on,');
 
@@ -1214,13 +1214,13 @@ class Simple_Personal_Message_Admin
 
         $user_groups[] = intval($_POST['spm_user_group']);
 
-        $groups = array_unique(array_map('intval', $user_groups));
+        $groups = array_unique(array_map('intval', $_POST['spm_user_group']));
 
         foreach ($user_ids as $user_id) {
 
-            wp_set_object_terms(esc_sql(esc_html($user_id)), $groups, 'spm-user-group', FALSE);
+            wp_set_object_terms($user_id, $groups, 'spm-user-group', FALSE);
 
-            clean_object_term_cache(esc_sql(esc_html($user_id)), 'spm-user-group');
+            clean_object_term_cache($user_id, 'spm-user-group');
 
         }
 
@@ -1702,7 +1702,7 @@ class Simple_Personal_Message_Admin
 
                 $table_name = $wpdb->prefix . 'spm_message';
 
-                $id = (isset($_POST['id']) && intval($_POST['id'])) ? esc_sql($_POST['id']) : NULL;
+                $id = (isset($_POST['id']) && intval($_POST['id'])) ? intval($_POST['id']) : NULL;
 
                 if ($id != NULL) {
 
